@@ -1,0 +1,17 @@
+debugger;
+let sc = `UPDATE hm.lib_borrows SET return_date = cm.currentdate() WHERE id=${selectedRow.id};`;
+let cn = form.formControls.find(dsfs => dsfs.control.name == 'grdRegister_no');
+return new Promise((resolve, reject) => {
+    calSrvc.runQuery(sc).subscribe(
+        res => {
+            if (res.IsSuccess) {
+                variables.refresh(cn.control)
+                resolve(console.log('موفق'))
+
+            }
+            else{
+                reject(console.log(res))
+            }
+        })
+})
+
